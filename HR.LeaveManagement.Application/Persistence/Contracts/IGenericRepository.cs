@@ -10,4 +10,5 @@ public interface IGenericRepository<T> where T : BaseDomainEntity
     Task<T> Add(T entity);
     Task<T> Update(T entity);
     Task<T> Delete(T entity);
+    Task<T> GetByIdAsync(int id);
 }
