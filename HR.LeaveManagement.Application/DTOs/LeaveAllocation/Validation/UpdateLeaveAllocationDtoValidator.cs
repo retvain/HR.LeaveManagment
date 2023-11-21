@@ -1,7 +1,7 @@
 using FluentValidation;
 using HR.LeaveManagement.Application.Persistence.Contracts;
 
-namespace HR.LeaveManagement.Application.DTOs.LeaveAllocation.Validators;
+namespace HR.LeaveManagement.Application.DTOs.LeaveAllocation.Validation;
 
 public class UpdateLeaveAllocationDtoValidator : AbstractValidator<LeaveAllocationDto>
 {

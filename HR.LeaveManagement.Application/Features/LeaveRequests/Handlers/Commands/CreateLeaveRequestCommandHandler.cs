@@ -4,12 +4,13 @@ using HR.LeaveManagement.Application.DTOs.LeaveRequest.Validation;
 using HR.LeaveManagement.Application.Exceptions;
 using HR.LeaveManagement.Application.Features.LeaveRequests.Requests.Commands;
 using HR.LeaveManagement.Application.Persistence.Contracts;
+using HR.LeaveManagement.Application.Responses;
 using HR.LeaveManagement.Domain;
 using MediatR;
 
 namespace HR.LeaveManagement.Application.Features.LeaveRequests.Handlers.Commands;
 
-public class CreateLeaveRequestCommandHandler : IRequestHandler<CreateLeaveRequestCommand, int>
+public class CreateLeaveRequestCommandHandler : IRequestHandler<CreateLeaveRequestCommand, BaseCommandResponse>
 {
     private readonly ILeaveRequestRepository _leaveRequestRepository;
     private readonly ILeaveTypeRepository _leaveTypeRepository;
@@ -22,9 +23,10 @@ public class CreateLeaveRequestCommandHandler : IRequestHandler<CreateLeaveReque
         _mapper = mapper;
     }
 
-    public async Task<int> Handle(CreateLeaveRequestCommand request, CancellationToken cancellationToken)
+    public async Task<BaseCommandResponse> Handle(CreateLeaveRequestCommand request, CancellationToken cancellationToken)
     {
         var validator = new CreateLeaveRequestDtoValidator(_leaveTypeRepository);
+        var response = new BaseCommandResponse();
 
         ValidationResult validationResult;
         if (request.LeaveRequestDto != null)
@@ -38,13 +40,21 @@ public class CreateLeaveRequestCommandHandler : IRequestHandler<CreateLeaveReque
 
         if (validationResult.IsValid == false)
         {
-            throw new ValidationException(validationResult);
+            response.Success = false;
+            response.Message = "Creation Failed";
+            response.Errors = validationResult.Errors.Select(q => q.ErrorMessage).ToList();
+
+            return response;
         }
         
         var leaveRequest = _mapper.Map<LeaveRequest>(request.LeaveRequestDto);
 
         leaveRequest = await _leaveRequestRepository.Add(leaveRequest);
 
-        return leaveRequest.Id;
+        response.Success = true;
+        response.Message = "Creation Successful";
+        response.Id = leaveRequest.Id; 
+
+        return response;
     }
 }
