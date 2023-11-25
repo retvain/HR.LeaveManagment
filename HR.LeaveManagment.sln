@@ -16,6 +16,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Domain",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Application", "HR.LeaveManagement.Application\HR.LeaveManagement.Application.csproj", "{76E45759-07C4-4F9C-9FD9-2CCFA33C8C65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Infrastructure", "HR.LeaveManagement.Infrastructure\HR.LeaveManagement.Infrastructure.csproj", "{9EA8E686-295B-489B-ABCF-5B002B653260}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Persistence", "HR.LeaveManagement.Persistence\HR.LeaveManagement.Persistence.csproj", "{BE8F69E7-B6AF-4514-873A-3A36F344F108}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +32,8 @@ Global
 		{CAD82392-32B1-4945-8D40-C1ABC85A3C3B} = {86C72FEA-7732-49E4-AE43-FC534F408E3C}
 		{A6439E33-7A6D-4473-AD03-D10BF9B1F259} = {5CA9A48A-0526-4BA9-A51C-D287B56117C5}
 		{76E45759-07C4-4F9C-9FD9-2CCFA33C8C65} = {5CA9A48A-0526-4BA9-A51C-D287B56117C5}
+		{9EA8E686-295B-489B-ABCF-5B002B653260} = {95252DCB-99AE-4330-905E-B469486C65E2}
+		{BE8F69E7-B6AF-4514-873A-3A36F344F108} = {95252DCB-99AE-4330-905E-B469486C65E2}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A6439E33-7A6D-4473-AD03-D10BF9B1F259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -38,5 +44,13 @@ Global
 		{76E45759-07C4-4F9C-9FD9-2CCFA33C8C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76E45759-07C4-4F9C-9FD9-2CCFA33C8C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76E45759-07C4-4F9C-9FD9-2CCFA33C8C65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EA8E686-295B-489B-ABCF-5B002B653260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA8E686-295B-489B-ABCF-5B002B653260}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA8E686-295B-489B-ABCF-5B002B653260}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA8E686-295B-489B-ABCF-5B002B653260}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE8F69E7-B6AF-4514-873A-3A36F344F108}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE8F69E7-B6AF-4514-873A-3A36F344F108}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE8F69E7-B6AF-4514-873A-3A36F344F108}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE8F69E7-B6AF-4514-873A-3A36F344F108}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
