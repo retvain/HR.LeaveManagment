@@ -9,5 +9,6 @@ public class LeaveAllocation : BaseDomainEntity
     public LeaveType? LeaveType { get; set; }
     public int LeaveTypeId { get; set; }
 
+    // test
     public int Period { get; set; }
 }
