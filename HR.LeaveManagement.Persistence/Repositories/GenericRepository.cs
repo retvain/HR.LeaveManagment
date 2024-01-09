@@ -1,5 +1,6 @@
 using HR.LeaveManagement.Application.Persistence.Contracts;
 using HR.LeaveManagement.Domain.Common;
+using Microsoft.EntityFrameworkCore;
 
 namespace HR.LeaveManagement.Persistence.Repositories;
 
@@ -16,9 +17,9 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseDomainEn
         return await _dbContext.Set<T>().FindAsync(id);
     }
 
-    public Task<IReadOnlyList<T>> GetAll()
+    public async Task<IReadOnlyList<T>> GetAll()
     {
-        throw new NotImplementedException();
+        return await _dbContext.Set<T>().ToListAsync();
     }
 
     public async Task<bool> Exists(int id)
@@ -36,9 +37,10 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseDomainEn
         return entity;
     }
 
-    public Task<T> Update(T entity)
+    public async Task Update(T entity)
     {
-        throw new NotImplementedException();
+        _dbContext.Entry(entity).State = EntityState.Modified;
+        await _dbContext.SaveChangesAsync();
     }
 
     public async Task Delete(T entity)
