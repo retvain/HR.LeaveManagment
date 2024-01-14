@@ -3,7 +3,7 @@ using FluentValidation.Results;
 using HR.LeaveManagement.Application.DTOs.LeaveRequest.Validation;
 using HR.LeaveManagement.Application.Exceptions;
 using HR.LeaveManagement.Application.Features.LeaveRequests.Requests.Commands;
-using HR.LeaveManagement.Application.Persistence.Contracts;
+using HR.LeaveManagement.Application.Contracts.Persistence;
 using MediatR;
 
 namespace HR.LeaveManagement.Application.Features.LeaveRequests.Handlers.Commands;
@@ -47,12 +47,13 @@ public class UpdateLeaveRequestCommandHandler : IRequestHandler<UpdateLeaveReque
         {
             _mapper.Map(request.LeaveRequestDto, leaveRequest);
 
-            await _leaveRequestRepository.Update(leaveRequest);
+            if (leaveRequest != null) await _leaveRequestRepository.Update(leaveRequest);
         }
         else if (request.ChangeLeaveRequestApprovalDto != null)
         {
-            await _leaveRequestRepository.ChangeApprovalStatus(leaveRequest,
-                request.ChangeLeaveRequestApprovalDto.Approved);
+            if (leaveRequest != null)
+                await _leaveRequestRepository.ChangeApprovalStatus(leaveRequest,
+                    request.ChangeLeaveRequestApprovalDto.Approved);
         }
 
         return Unit.Value;
